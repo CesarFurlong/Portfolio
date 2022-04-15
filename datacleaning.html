@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Cesar Furlong Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="https://drive.google.com/file/d/1s4524HxGPHPKg8Gix1x5QH8NSdCp3rqt/view?usp=sharing" class="logo">Descargar Resume</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Acerca de mí</a></li>
+							<li class="active"><a href="generic.html">Proyectos</a></li>
+							<li><a href="contacto.html">Contacto</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/cesarfurlong" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://www.github.com/CesarFurlong" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://public.tableau.com/app/profile/cesarfurlong" class="icon brands fa-dribbble"><span class="label">Tableau</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">April 11, 2022</span>
+									<h1>Data Cleaning en SQL</h1>
+								</header>
+								<p>La limpieza de datos (SQL, Python, R) es una de las partes más importantes de un proyecto de análisis de datos, debido a que la calidad de los datos que utilizamos determina la precisión de los resultados y las decisiones que tomamos a partir de ellos. 
+
+								</p>
+								<h3>Objetivo principal</h3>
+								<p>Repasar las técnicas data cleaning más frecuentes en un set de datos.</p>
+								         <list>
+											<h3>Objetivos secundarios</h3>
+											<ul>
+												<li>Explorar el dataset en busca de incongruencias o errores.</li>
+												<li>Estandarizar el formato de fechas.</li>
+												<li>Dividir la información de la columna Address (street, state, zipcode).</li>
+												<li>Buscar y eliminar los valores duplicados en el dataset.</li>
+												<li>Eliminar las columnas que no se ocuparan en el analisis.</li>
+											</ul>
+								         </list>
+
+								 <h3>Acerca del dataset</h3>
+								 <p>El set de datos contiene información de las ventas de una tienda en línea durante 13 meses. El conjunto de datos consta de 10 columnas, cada una de las cuales representa un atributo de compra sobre un producto adquirido:</p>
+								        <ul>
+								            <li>ID del pedido - Un ID único para cada pedido realizado sobre un producto.</li>
+										    <li>Producto - Artículo que se compra.</li>
+										    <li>Cantidad de productos - Describe cuántos productos ordenaron.</li>
+										    <li>Precio unitario del producto - Precio de una unidad de ese producto.</li>
+										    <li>Fecha del pedido - Fecha en la que se realiza el pedido.</li>
+										    <li>Dirección de compra - Dirección a la que se envía el pedido.</li>
+										    <li>Mes, Ventas, Ciudad, Hora - Atributos extra formados a partir de los anteriores columnas.</li>
+										</ul>	
+										 <p>Fuente del dataset:<a href = "https://www.kaggle.com/datasets/beekiran/sales-data-analysis"> Kaggle </a></p> 
+										  
+										 <h4>Estandarizar el formato de fechas</h4>
+										 <p>El formato de la columna OrderDate incluye fecha y hora, es decir es una función 'DateTime'. 
+											Por tanto, se ha creado una nueva columna denominada order_date con el formato de fecha 'Date' para facilitar el posterior uso de las herramientas Business Intelligence.</p>
+										 <center>
+											<img width="" height="" src="images/query1dates.PNG" alt="" />
+										</center> 
+										 <br/>
+										 <h4>Dividir la información de la columna Address</h4>
+										 <p>Normalmente, necesitamos analizar los datos por zona, región, ciudad, país, etc. Por eso es más útil tener la dirección de la casa, la ciudad y el estado en diferentes columnas.<br/>
+										  En esta sección se hizo uso de las funciones "sbstr" e "instr" para extraer la información separada por un delimitador de texto de la columna PurchaseAddress. SQLite no cuenta con la función de CHARINDEX.</p>
+										  <center>
+											  <img width="600" height="" src="images/query2split.PNG" alt="" />
+										  </center>
+										</br>
+										 <h4>Buscar y eliminar los valores duplicados en el dataset</h4>
+										 <p>La función ROW_NUMBER asigna un número a cada fila con información que debe ser única en cada propiedad como orderID, address, product 
+										    y muestra el número de veces que una fila con los mismos datos aparece en el conjunto de datos.</p>
+											<center>
+												<img width="950" height="" src="images/query3duplicates.PNG" alt="" />
+											</center></br>									
+										 <p>Para ello primero utilizamos la función row number para identificar los OrderID que tienen la información duplicada y filtramos aquellos en donde row number = 2 para determinar los 269 registros duplicados que tiene el dataset. 
+										 Posteriormente, creamos una tabla temporal con la consulta anterior eliminando los registros duplicados. </p>
+										 
+										 <h4>Eliminar las columnas que no se ocuparán en el análisis.</h4>
+										 <p>Removemos las columnas con información sin importancia para nuestro análisis.</p>
+								
+									<a href = "https://github.com/CesarFurlong/Portfolio-Projects/blob/main/Online%20Store%20-%20Cleaning%20dataset%20in%20SQL.sql" target="_blank" class="button primary fit">Ir a repositorio en GitHub</a>  
+										    								  
+							</section>
+					</div>
+
+				
+
+				
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
